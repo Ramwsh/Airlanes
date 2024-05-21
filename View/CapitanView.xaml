@@ -1,0 +1,248 @@
+﻿<Window
+    x:Class="Airlanes.View.CapitanView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Airlanes.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="AirlanesView"
+    Width="1280"
+    Height="720"
+    AllowsTransparency="True"
+    Background="#F5F5F5"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Grid>
+        <StackPanel
+            Width="1280"
+            Height="45"
+            VerticalAlignment="Top"
+            Background="#3498DB">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    FontFamily="Segoe UI Variable Text Semilight"
+                    FontSize="24"
+                    Foreground="White"
+                    Text="Система управления авиалиниями" />
+                <Button
+                    Grid.Column="1"
+                    Width="40"
+                    Height="40"
+                    Margin="0,2.5,5,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Background="PaleVioletRed"
+                    BorderBrush="Red"
+                    BorderThickness="1" />
+            </Grid>
+        </StackPanel>
+        <StackPanel
+            Width="1280"
+            Height="675"
+            VerticalAlignment="Bottom">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel
+                    Grid.Column="0"
+                    Width="200"
+                    Height="675"
+                    Background="LightGray"
+                    Orientation="Vertical">
+                    <TextBlock
+                        Background="#ECF0F1"
+                        FontSize="36"
+                        Foreground="Black"
+                        Text="Разделы:"
+                        TextAlignment="Center" />
+                    <Button
+                        Margin="0,5,0,0"
+                        Background="#ECF0F1"
+                        Content="Рейс"
+                        FontFamily="Segoe UI Variable Text Semilight"
+                        FontSize="32"
+                        Foreground="Black" />
+                    <Button
+                        Margin="0,5,0,0"
+                        Background="#ECF0F1"
+                        Content="Пассажир"
+                        FontFamily="Segoe UI Variable Text Semilight"
+                        FontSize="32"
+                        Foreground="Black" />
+                    <Button
+                        Margin="0,5,0,0"
+                        Background="#ECF0F1"
+                        Content="Самолёт"
+                        FontFamily="Segoe UI Variable Text Semilight"
+                        FontSize="32"
+                        Foreground="Black" />
+                    <Button
+                        Margin="0,5,0,0"
+                        Background="#ECF0F1"
+                        Content="Маршрут"
+                        FontFamily="Segoe UI Variable Text Semilight"
+                        FontSize="32"
+                        Foreground="Black" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="1"
+                    Height="45"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+                    <TextBlock
+                        HorizontalAlignment="Right"
+                        FontFamily="Segoe UI Variable Text Semilight"
+                        FontSize="32"
+                        Text="Капитан"
+                        TextAlignment="Right" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="1"
+                    Height="625"
+                    VerticalAlignment="Bottom">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel
+                            Grid.Column="0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Vertical">
+                            <DataGrid
+                                Width="500"
+                                Height="600"
+                                Background="LightGray"
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="16"
+                                Foreground="Black"
+                                ItemsSource="{Binding Capitans}"
+                                SelectedItem="{Binding SelectedCapitanItem}" />
+                        </StackPanel>
+                        <StackPanel
+                            Grid.Column="1"
+                            Width="325"
+                            Height="600"
+                            Margin="0,0,25,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Background="LightGray"
+                            Orientation="Vertical">
+
+                            <TextBlock
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="32"
+                                Foreground="Black"
+                                Text="Управление таблицей"
+                                TextAlignment="Center" />
+
+                            <Button
+                                Width="300"
+                                Command="{Binding CreateCommand}"
+                                Content="Создать"
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="32"
+                                Foreground="DarkBlue" />
+
+                            <Button
+                                Width="300"
+                                Command="{Binding DeleteCommand}"
+                                Margin="0,5,0,0"
+                                Content="Удалить"
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="32"
+                                Foreground="PaleVioletRed" />
+
+                            <Button
+                                Width="300"
+                                Margin="0,5,0,0"
+                                Content="Изменить"
+                                Command="{Binding UpdateCommand}"
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="26"
+                                Foreground="Goldenrod" />
+                            <TextBlock
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="26"
+                                Foreground="Black"
+                                Text="ID рейса"
+                                TextAlignment="Center" />
+                            <TextBox
+                                Width="300"
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="26"
+                                Foreground="Black"
+                                Text="{Binding PersonalNum}"
+                                TextAlignment="Center" />
+                            <TextBlock
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="26"
+                                Foreground="Black"
+                                Text="ФИО капитана"
+                                TextAlignment="Center" />
+                            <TextBox
+                                Width="300"
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="26"
+                                Foreground="Black"
+                                Text="{Binding CapitanName}"
+                                TextAlignment="Center" />
+                            <TextBlock
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="26"
+                                Foreground="Black"
+                                Text="Адрес"
+                                TextAlignment="Center" />
+                            <TextBox
+                                Width="300"
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="26"
+                                Foreground="Black"
+                                Text="{Binding Address}"
+                                TextAlignment="Center" />
+                            <TextBlock
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="26"
+                                Foreground="Black"
+                                Text="Телефон"
+                                TextAlignment="Center" />
+                            <TextBox
+                                Width="300"
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="26"
+                                Foreground="Black"
+                                Text="{Binding Phone}"
+                                TextAlignment="Center" />
+                            <TextBlock
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="26"
+                                Foreground="Black"
+                                Text="Налёт"
+                                TextAlignment="Center" />
+                            <TextBox
+                                Width="300"
+                                FontFamily="Segoe UI Variable Text Semilight"
+                                FontSize="26"
+                                Foreground="Black"
+                                Text="{Binding Raid}"
+                                TextAlignment="Center" />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
